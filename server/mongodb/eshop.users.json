@@ -1,0 +1,63 @@
+[{
+  "_id": {
+    "$oid": "66ffeded0cf5932b75122fca"
+  },
+  "userName": "ddasfv",
+  "userPassword": "$2a$10$yylHR8a871KHkGAJOBcWue3sqUEuJ3ytZGXX1b1PSQmIVv1Tw7vce",
+  "role": "Client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66ffee080cf5932b75122fcc"
+  },
+  "userName": "gfds",
+  "userPassword": "$2a$10$wONuaai.jOdh0FyuOsKmqO7xvC9pTYSCBcH7R.AbiY5Wxcp4HEIJ.",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66ffee8102fa695ba5485f07"
+  },
+  "userName": "sdfdsf",
+  "userPassword": "$2a$10$9a3KG9QAV76KIJrRI.oDk.YCxgocVr6sVK3Syl6Z5wzkJdBHGRHTC",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66ffef715fb2cdbf392e2f30"
+  },
+  "userName": "dfs",
+  "userPassword": "$2a$10$xWxsAGjgv0JGTQFX7PvbpOLr6CsVNg41XTy7/hkWWmfZNVhrCUBk2",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66ffefe1238a8124b12c8aa8"
+  },
+  "userName": "qqq",
+  "userPassword": "$2a$10$rZQoUsemmSO.dlPe58CBvubq8e4K7juv3.OSHDHftdnG.ED3QnMjC",
+  "role": "client",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66fff5fc349dbb425033f1ce"
+  },
+  "userName": "www",
+  "userPassword": "$2a$10$SzZmqgc3s/ep3476VVchiuQwpl82RTTHVmnJ3a4TjOLrBsFpqxpOy",
+  "role": "admin",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "670006136cf98d592e5276df"
+  },
+  "userName": "eee",
+  "userPassword": "$2a$10$B2na1aqWKa4ANO.FF8iOyuYKs3ttoKkZkRYFJKKy1WiY8cXNYbHUy",
+  "role": "client",
+  "__v": 0
+}]
