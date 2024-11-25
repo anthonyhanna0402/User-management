@@ -1,0 +1,30 @@
+[{
+  "_id": {
+    "$oid": "670068dfb69d96baec90de16"
+  },
+  "name": "fa",
+  "price": 111,
+  "quantity": 111,
+  "image": "upload\\2cf4acc4-6b2f-49ea-8f1b-a4e83f403b1b-1728080095794.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67006c62b4a68a22ae26aacb"
+  },
+  "name": "das",
+  "price": 11,
+  "quantity": 2121,
+  "image": "upload\\a4870c06-54ee-4a26-a1de-f0049b60c460-1728080994849.png",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "67006c73b4a68a22ae26aacd"
+  },
+  "name": "aa",
+  "price": 112,
+  "quantity": 324,
+  "image": "upload\\951945c0-49e0-43cf-b362-0abd39353b17-1728081011561.png",
+  "__v": 0
+}]
