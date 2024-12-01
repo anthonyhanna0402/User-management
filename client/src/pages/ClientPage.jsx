@@ -1,19 +1,18 @@
 import React, { useState, useEffect } from 'react';
 import Header from '../components/Customer/Layout/Header';
 import axios from 'axios';
-import ProductItem from '../components/Customer/Home/ProductItem';
 
 const ClientPage = () => {
 
-  const [production, setProduction] = useState([]); 
+  const [users, setUsers] = useState([]); 
 
-  const getProduction = async () => {
+  const getUsers = async () => {
     try {
-      const response = await axios.get('http://localhost:5000/api/client');
+      const response = await axios.get('http://localhost:5000/api/user/getusers');
 
-      if(response.data&&response.data.product) {
-        setProduction(response.data.product);
-        console.log(production);
+      if(response.data&&response.data.users) {
+        setUsers(response.data.users);
+        console.log(users);
           
       } else {
         console.log("no data");
@@ -25,20 +24,22 @@ const ClientPage = () => {
   }
 
   useEffect(()=>{
-    getProduction();
+    getUsers();
   },[]);
 
 
   return (
-    <>    
-      <Header />
-      <div className='grid grid-cols-6 mt-8'>
-      {production&&(
-        production.map(item=> (
-          <ProductItem image={item.image} title={item.name} price={item.price} quantity={item.quantity} information={item} />
-        ))
-      )}
-      </div>
+    <>
+    <Header />
+      {users.map(item=> (
+        <div className="px-14">
+          <li className='flex' key ={item._id}>
+            <p className='p-2'>{}</p>
+            <p className='p-2'>{item.userName}</p>
+            <p className='p-2'>{item.role}</p>
+          </li>
+        </div>
+      ))}
     </>
   )
 }

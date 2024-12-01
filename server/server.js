@@ -9,6 +9,7 @@ const dbUrl = require('./config/constants').dbUrl;
 const secretKey = require('./config/constants').secret;
 
 const userRouter = require('./routes/auth');
+const userManage = require('./routes/admin/user');
 const productRouter = require('./routes/admin/productupload');
 const clientproduct = require('./routes/client/production');
 const app = express();
@@ -33,6 +34,7 @@ mongoose
   .catch((error)=>console.log(error));
 app.use('/upload', express.static(path.join(__dirname, 'upload')));
 app.use('/api/user', userRouter);
+app.use('/api/userManage', userManage);
 app.use('/api/product', productRouter);
 app.use('/api/client', clientproduct);
 app.listen(port, ()=>{
