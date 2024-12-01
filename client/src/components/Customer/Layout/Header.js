@@ -1,29 +1,18 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Link, useNavigate } from 'react-router-dom';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { faCartShopping } from '@fortawesome/free-solid-svg-icons'; 
-import Dropdown from '../Home/Dropdown';
 import { useSelector, useDispatch } from 'react-redux';
 import { logout } from '../../../redux/user/authSlice';
 const Header = () => {
   const dispatch= useDispatch();
   const navigation = useNavigate();
-  const [isDropdownOpen, setIsDropdownOpen] = useState(false);
   const currentUser = useSelector(state=>state.auth.userName);
 
-  const toggleDropdown = () => {
-    setIsDropdownOpen((prev)=>!prev);
-  }
-  
   const handleLogout = () => {
     localStorage.removeItem('token');
     dispatch(logout());
     navigation('/');
   };
 
-
-  const currentCart = useSelector((state)=> state.cart.currentCart);
-  const totalItems = currentCart.length;
   return(
     <React.Fragment>
       <div>

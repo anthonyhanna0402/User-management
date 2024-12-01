@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
+import Modal from '../components/Admin/Modal';
 
 const Dashboard = () => {
 
   const [user, setUser] = useState([]); 
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [selectedUser, setSelectedUser] = useState(null);
 
   const getUsers = async () => {
     try {
@@ -24,8 +27,25 @@ const Dashboard = () => {
 
   useEffect(()=>{
     getUsers();
-  },[]);
+  },[user]);
+  
+  const handleEditClick = (user) => {
+    setSelectedUser(user); // Set the selected user data
+    setIsModalOpen(true); // Open the modal
+  };
 
+  const handleDelete = async (userId) => {
+    const data = {
+      userId:userId,
+    }
+    try {
+      const response = axios.post('http://localhost:5000/api/userManage/delete', data);
+      setUser(response.data.updatedUser);
+    } catch (error) {
+      console.log(error);
+    }
+  }
+  
   return (
     <>
       {user.map(item=> (
@@ -34,11 +54,13 @@ const Dashboard = () => {
             <p className='p-2'>{}</p>
             <p className='p-2'>{item.userName}</p>
             <p className='p-2'>{item.role}</p>
-            <button className='p-2 text'>Edit</button>
-            <button className='p-2'>Delete</button>
+            <button className='p-2 text' onClick={()=> handleEditClick(item)}>Edit</button>
+            <button className='p-2' onClick={()=> handleDelete(item._id)}>Delete</button>
+
           </li>
         </div>
       ))}
+      <Modal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} userData={selectedUser} />
     </>
   )
 }
