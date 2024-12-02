@@ -26,14 +26,14 @@ const Modal = ({ isOpen, onClose, userData }) => {
     }
 
     try {
-      const response = await axios.post('http://localhost:5000/api/userManage/edit', data);
-
+      const response = await axios.post('http://localhost:5000/api/userManage/edit', data);      
+      if(response.status==200) {
+        onClose();
+      }
     } catch (error) {
       console.log(error);
     }
   }
-
-  console.log('role', role);
 
   if (!isOpen) return null;
 
@@ -51,7 +51,7 @@ const Modal = ({ isOpen, onClose, userData }) => {
         </div>
         <div className="mb-4">
           <form>
-            <label className='block mb-2'>
+            <label className='block mb-6'>
               Email:
               <input
                 type='text'
@@ -61,7 +61,7 @@ const Modal = ({ isOpen, onClose, userData }) => {
                 onChange={(e)=> setUserName(e.target.value)}
               />
             </label>
-            <label className='block mb-2'>
+            <label className='block mb-6'>
               Role:
               <select 
                 value={role}
@@ -74,18 +74,20 @@ const Modal = ({ isOpen, onClose, userData }) => {
           </form>
 
         </div>
-        <button
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 "
-          onClick={handleSave}
-        >
-          Save
-        </button>
-        <button
-          className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
-          onClick={onClose}
-        >
-          Close
-        </button>
+        <div className='flex justify-evenly'>
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 "
+            onClick={handleSave}
+          >
+            Save
+          </button>
+          <button
+            className="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600"
+            onClick={onClose}
+          >
+            Close
+          </button>
+        </div>        
       </div>
     </div>
   );

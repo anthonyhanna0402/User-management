@@ -16,8 +16,8 @@ const Header = () => {
 
   return(
     <React.Fragment>
-      <div>
-      <div className="container mx-auto flex justify-between items-center px-20 py-8">
+      <div className='bg-cyan-700'>
+      <div className="container mx-auto flex justify-between px-5 py-8">
           <button><h1 className='text-cyan-400 text-3xl font-bold'>User Management System</h1></button>
           <button className="xl:hidden text-white focus:outline-none" id="menu-button">
             <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
@@ -26,12 +26,14 @@ const Header = () => {
           </button>
           <div className="hidden xl:flex">
           <div class="hidden xl:flex xl:items-center">
-            <Link to="/admin" className='text-2xl mr-6'>Home</Link>
-            <Link to="/add" className='text-2xl mr-6'>Add</Link>
-            <Link to="/about" className='text-2xl mr-12'>About</Link>
+            <Link to="/admin" className='text-xl mr-6 font-bold'>Home</Link>
+            <Link to="/add" className='text-xl mr-6 font-bold'>Add</Link>
+            <Link to="/about" className='text-xl mr-12 font-bold'>About</Link>
           </div>
-            <p className='mr-5'>{currentUser}</p>
+          <div className='flex justify-between items-center'>
+            <p className='mr-5 items-center text-white'>{currentUser}</p>
             <button onClick={handleLogout}>SignOut</button>
+          </div>            
           </div>
         </div>
       </div>

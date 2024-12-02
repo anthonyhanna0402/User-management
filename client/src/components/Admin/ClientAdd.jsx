@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import axios from 'axios';
 import { useNavigate } from 'react-router-dom';
 
@@ -7,19 +7,31 @@ const ClientAdd = () => {
   const [userName, setUserName] = useState('');
   const [userPassword, setUserPassword] = useState('');
   const [role, setRole] = useState('client'); // Default role
-  console.log('userName', userName);
 
   const handleSubmit = async (e) => {
-      e.preventDefault();
-      try {
-          await axios.post('http://localhost:5000/api/user/signup', { userName, userPassword, role });
-          alert('User created successfully');
-          navigation('/admin');
-          setUserName('');
-          setUserPassword('');
-      } catch (error) {
-          console.error('Signup failed', error);
+      
+    e.preventDefault();
+    
+    try {
+      const token = localStorage.getItem('token');
+      if(!token) {
+        alert('No authentication Token found');
+        return;
       }
+     
+        await axios.post('http://localhost:5000/api/user/signup', { userName, userPassword, role },
+          {
+            headers:{
+              Authorization:`Bearer ${token}`,
+            }
+          });
+        alert('User created successfully');
+        navigation('/admin');
+        setUserName('');
+        setUserPassword('');
+    } catch (error) {
+        console.error('Signup failed', error);
+    }
   };
 
   return (

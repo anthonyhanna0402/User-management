@@ -27,7 +27,7 @@ const Dashboard = () => {
 
   useEffect(()=>{
     getUsers();
-  },[user]);
+  },[isModalOpen]);
   
   const handleEditClick = (user) => {
     setSelectedUser(user); // Set the selected user data
@@ -48,19 +48,33 @@ const Dashboard = () => {
   
   return (
     <>
-      {user.map(item=> (
-        <div className="px-14">
-          <li className='flex' key ={item._id}>
-            <p className='p-2'>{}</p>
-            <p className='p-2'>{item.userName}</p>
-            <p className='p-2'>{item.role}</p>
-            <button className='p-2 text' onClick={()=> handleEditClick(item)}>Edit</button>
-            <button className='p-2' onClick={()=> handleDelete(item._id)}>Delete</button>
-
-          </li>
-        </div>
-      ))}
-      <Modal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} userData={selectedUser} />
+    <div className='flex-row justify-between items-center'>
+        <h1 className='flex justify-center text-5xl font-bold'>Users</h1>
+        <div className="p-5">
+          <table border="1" style={{ width: '100%', borderCollapse: 'collapse' }}>
+          <thead>
+            <tr>
+              <th>Email</th>
+              <th>Role</th>
+              <th>Edit</th>
+              <th>Delete</th>
+            </tr>
+          </thead>
+          <tbody>
+            {user.map((item)=> (
+              <tr key={item._id}>
+                <td className='text-center'>{item.userName}</td>
+                <td className='text-center'>{item.role}</td>
+                <td className='text-center'><button className='p-2 bg-cyan-500' onClick={()=> handleEditClick(item)}>Edit</button></td>
+                <td className='text-center'><button className='p-2 bg-red-500' onClick={()=> handleDelete(item._id)}>Delete</button>
+                </td>
+              </tr>
+            ))}
+          </tbody>
+          </table>
+          </div>
+        <Modal isOpen={isModalOpen} onClose={()=>setIsModalOpen(false)} userData={selectedUser} />
+    </div>      
     </>
   )
 }
